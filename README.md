@@ -11,3 +11,6 @@ helm repo update
 Just `helm install cda-helm/<chart>`. This is the default repository for Helm which is located at https://broadinstitute.github.io/cda-helm/ and is installed by default.
 
 For more information on using Helm, refer to the [Helm documentation](https://github.com/kubernetes/helm#docs).
+
+## Example
+```helm upgrade cda cda-helm/cda --install --namespace dev --create-namespace```
