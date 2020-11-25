@@ -1,6 +1,8 @@
 # cda-helm
 A helm repo for cda from Broad Data Science Platforms Group
 
+![Release Indivdual Charts](https://github.com/broadinstitute/cda-helm/workflows/Release%20Indivdual%20Charts/badge.svg)
+
 ## How Do I install the repo
 ```
 helm repo add cda-helm https://broadinstitute.github.io/cda-helm
