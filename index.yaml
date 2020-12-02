@@ -2,6 +2,27 @@ apiVersion: v1
 entries:
   cda:
   - apiVersion: v2
+    appVersion: 0.0.4
+    created: "2020-12-02T15:40:43.036952736Z"
+    description: A Helm chart to deploy cda to Kubernetes
+    digest: 11b7916101b62c1cff3452f9559f26629e6619d1feeda10cf27d37f5966e693f
+    home: https://broadinstitute.github.io/cda-helm/
+    keywords:
+    - google
+    - cloud
+    - cda
+    - broadinstitute
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: cda
+    sources:
+    - https://github.com/broadinstitute/cda-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/broadinstitute/cda-helm/releases/download/cda-0.1.1/cda-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
     appVersion: 1.16.0
     created: "2020-11-25T12:35:25.882098-05:00"
     description: A Helm chart to deploy cda to Kubernetes
