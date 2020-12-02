@@ -25,3 +25,11 @@ jobs:
         uses: helm/chart-releaser-action@v1.1.0
         env:
           CR_TOKEN: "${{ secrets.CR_TOKEN }}"
+
+      - name: Commit files
+        run: |
+          git config --local user.email "robot@cda.team"
+          git config --local user.name "GitHub Action"
+          git commit -m "Added changes to charts" -a
+          git diff
+          git push
