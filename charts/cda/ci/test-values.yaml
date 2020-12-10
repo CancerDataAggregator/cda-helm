@@ -1,5 +1,3 @@
-imagePullSecrets:
-  - name: gcr-json-key
 rbac:
   # Specifies whether rbac policies should be created
   create: false

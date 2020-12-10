@@ -1,7 +1,5 @@
 ---
 name: Helm Chart Lint
-env:
-  GOOGLE_APPLICATION_CREDENTIALS: /tmp/sa.json
 
 on: pull_request
 
@@ -22,16 +20,6 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: 3.7
-
-      - name: Import Vault secrets
-        id: secrets
-        uses: hashicorp/vault-action@v2.1.0
-        with:
-          url: ${{ secrets.VAULT_ADDR }}
-          method: approle
-          roleId: ${{ secrets.ROLE_ID }}
-          secretId: ${{ secrets.SECRET_ID }}
-          secrets: secret/devops/terraform/dev/cda/helm-gcr-service-account.json $base64decode(key) | APPLICATION_CREDENTIALS ;
 
       - name: Set up chart-testing
         uses: helm/chart-testing-action@v2.0.1
@@ -54,16 +42,5 @@ jobs:
       - name: Test Kind Cluster
         run: kubectl cluster-info
 
-      - name: Configure imagePullSecrets
-        run: |
-          kubectl create secret docker-registry gcr-json-key \
-            --docker-server=gcr.io \
-            --docker-username=_json_key \
-            --docker-password="$(echo $APPLICATION_CREDENTIALS)" \
-            --docker-email=any@valid.email
-          kubectl patch serviceaccount default \
-            -p '{"imagePullSecrets": [{"name": "gcr-json-key"}]}'
-          kubectl get secret gcr-json-key -o yaml
-
-#      - name: Run chart-testing (install)
-#        run: ct install
+      - name: Run chart-testing (install)
+        run: ct install --debug
