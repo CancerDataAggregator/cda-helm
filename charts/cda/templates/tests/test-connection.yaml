@@ -11,5 +11,5 @@ spec:
     - name: wget
       image: busybox
       command: ['wget']
-      args: ['{{ include "cda.fullname" . }}:{{ .Values.service.port }}']
+      args: ['{{ include "cda.fullname" . }}.{{.Release.Namespace}}:{{ .Values.service.port }}/status']
   restartPolicy: Never
