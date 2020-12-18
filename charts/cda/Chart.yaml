@@ -15,7 +15,7 @@ type: application
 # This is the chart version. This version number should be incremented each time you make changes
 # to the chart and its templates, including the app version.
 # Versions are expected to follow Semantic Versioning (https://semver.org/)
-version: 0.1.2
+version: 0.1.3
 appVersion: 0.0.4
 
 keywords:
@@ -23,12 +23,13 @@ keywords:
 - cloud
 - cda
 - broadinstitute
+- CancerDataAggregator
 
 maintainers:
 - email: smark@broadinstitute.org
   name: smark
 
 sources:
-- https://github.com/broadinstitute/cda-helm/tree/master/charts
+- https://github.com/CancerDataAggregator/cda-helm/tree/master/charts
 
-home: https://broadinstitute.github.io/cda-helm/
+home: https://CancerDataAggregator.github.io/cda-helm/
