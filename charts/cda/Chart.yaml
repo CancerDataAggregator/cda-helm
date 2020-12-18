@@ -23,12 +23,13 @@ keywords:
 - cloud
 - cda
 - broadinstitute
+- CancerDataAggregator
 
 maintainers:
 - email: smark@broadinstitute.org
   name: smark
 
 sources:
-- https://github.com/broadinstitute/cda-helm/tree/master/charts
+- https://github.com/CancerDataAggregator/cda-helm/tree/master/charts
 
-home: https://broadinstitute.github.io/cda-helm/
+home: https://CancerDataAggregator.github.io/cda-helm/
