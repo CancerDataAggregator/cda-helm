@@ -9,22 +9,28 @@ global:
 
 image:
   repository: gcr.io/broad-cda-dev/cda-integration
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.0.20-SNAPSHOT
+  tag: 0.0.20.4-SNAPSHOT
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
+ingress:
+  enabled: true
+  domainName: integration.cda-dev.broadinstitute.org
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: cda-int-ip
+  hosts:
+    - host: integration.cda-dev.broadinstitute.org
+      paths:
+        - /*
+
 serviceAccount:
-  # Specifies whether a service account should be created
   create: true
-  # Annotations to add to the service account
-  annotations: {}
-  # The name of the service account to use.
-  # If not set and create is true, a name is generated using the fullname template
-  name: "integration-service"
+  annotations: 
+    iam.gke.io/gcp-service-account: bq-cda-sa@broad-cda-dev.iam.gserviceaccount.com  
 
 rbac:
   # Specifies whether rbac policies should be created
@@ -44,7 +50,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: ClusterIP
+  type: LoadBalancer
   port: 8080
 
 ingress:
