@@ -2,14 +2,14 @@
 kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: "{{ include "cda.fullname" . }}-use-pod-security-policy-role"
+  name: "{{ include "cda-integration.fullname" . }}-use-pod-security-policy-role"
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "cda.labels" . | nindent 4 }}
+    {{- include "cda-integration.labels" . | nindent 4 }}
 rules:
 - apiGroups: ['policy']
   resources: ['podsecuritypolicies']
   verbs: ["use"]
   resourceNames:
-    - "{{ include "cda.fullname" . }}-pod-running-policy"
+    - "{{ include "cda-integration.fullname" . }}-pod-running-policy"
 {{- end }}

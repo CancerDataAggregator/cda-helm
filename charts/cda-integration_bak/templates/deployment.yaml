@@ -1,49 +1,49 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "cda.fullname" . }}
+  name: {{ include "cda-integration.fullname" . }}
   labels:
-    {{- include "cda.labels" . | nindent 4 }}
+    {{- include "cda-integration.labels" . | nindent 4 }}
 spec:
-{{- if not .Values.autoscaling.enabled }}
+  {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-{{- end }}
+  {{- end }}
   selector:
     matchLabels:
-      {{- include "cda.selectorLabels" . | nindent 6 }}
+      {{- include "cda-integration.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-    {{- with .Values.podAnnotations }}
+      {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
-    {{- end }}
+      {{- end }}
       labels:
-        {{- include "cda.selectorLabels" . | nindent 8 }}
+        {{- include "cda-integration.selectorLabels" . | nindent 8 }}
     spec:
       {{- with .Values.imagePullSecrets }}
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "cda.serviceAccountName" . }}
+      serviceAccountName: {{ include "cda-integration.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: {{ include "cda.image" . }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 8080
+              containerPort: 80
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /status
+              path: /
               port: http
           readinessProbe:
             httpGet:
-              path: /status
+              path: /
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}

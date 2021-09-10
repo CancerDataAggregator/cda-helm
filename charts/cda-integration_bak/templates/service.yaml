@@ -1,9 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "cda.fullname" . }}
+  name: {{ include "cda-integration.fullname" . }}
   labels:
-    {{- include "cda.labels" . | nindent 4 }}
+    {{- include "cda-integration.labels" . | nindent 4 }}
 spec:
   type: {{ .Values.service.type }}
   ports:
@@ -12,4 +12,4 @@ spec:
       protocol: TCP
       name: http
   selector:
-    {{- include "cda.selectorLabels" . | nindent 4 }}
+    {{- include "cda-integration.selectorLabels" . | nindent 4 }}

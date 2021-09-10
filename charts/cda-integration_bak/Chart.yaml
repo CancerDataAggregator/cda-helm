@@ -1,8 +1,8 @@
 apiVersion: v2
 name: cda-integration
-description: A Helm chart to deploy cda to Kubernetes
+description: A Helm chart to deploy CDA Spring Boot API to integration cluster 
 type: application
-version: 0.2.5
+version: 0.2.4
 appVersion: 0.0.20-SNAPSHOT
 
 maintainers:
@@ -12,4 +12,3 @@ maintainers:
 sources:
 - https://github.com/CancerDataAggregator/cda-helm/tree/master/charts
 
-home: https://CancerDataAggregator.github.io/cda-helm/

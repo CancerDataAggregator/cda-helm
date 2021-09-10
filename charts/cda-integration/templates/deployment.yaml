@@ -5,18 +5,18 @@ metadata:
   labels:
     {{- include "cda-integration.labels" . | nindent 4 }}
 spec:
-  {{- if not .Values.autoscaling.enabled }}
+{{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
-  {{- end }}
+{{- end }}
   selector:
     matchLabels:
       {{- include "cda-integration.selectorLabels" . | nindent 6 }}
   template:
     metadata:
-      {{- with .Values.podAnnotations }}
+    {{- with .Values.podAnnotations }}
       annotations:
         {{- toYaml . | nindent 8 }}
-      {{- end }}
+    {{- end }}
       labels:
         {{- include "cda-integration.selectorLabels" . | nindent 8 }}
     spec:
@@ -31,19 +31,19 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.securityContext | nindent 12 }}
-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          image: {{ include "cda-integration.image" . }}
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           ports:
             - name: http
-              containerPort: 80
+              containerPort: 8080
               protocol: TCP
           livenessProbe:
             httpGet:
-              path: /
+              path: /status
               port: http
           readinessProbe:
             httpGet:
-              path: /
+              path: /status
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
