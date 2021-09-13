@@ -29,8 +29,8 @@ ingress:
 
 serviceAccount:
   create: true
-  annotations: 
-    iam.gke.io/gcp-service-account: bq-cda-sa@broad-cda-dev.iam.gserviceaccount.com  
+  annotations:
+    iam.gke.io/gcp-service-account: bq-cda-sa@broad-cda-dev.iam.gserviceaccount.com
 
 rbac:
   # Specifies whether rbac policies should be created
