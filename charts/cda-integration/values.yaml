@@ -17,16 +17,6 @@ imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
-ingress:
-  enabled: true
-  domainName: integration.cda-dev.broadinstitute.org
-  annotations:
-    kubernetes.io/ingress.global-static-ip-name: cda-int-ip
-  hosts:
-    - host: integration.cda-dev.broadinstitute.org
-      paths:
-        - /*
-
 serviceAccount:
   create: true
   annotations:
