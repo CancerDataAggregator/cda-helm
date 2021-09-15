@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "cda-integration.fullname" . }}-test-connection"
+  labels:
+    {{- include "cda-integration.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "cda-integration.fullname" . }}.{{.Release.Namespace}}:{{ .Values.service.port }}/status']
+  restartPolicy: Never

@@ -1,0 +1,20 @@
+apiVersion: v2
+name: cda-integration
+description: A Helm chart to deploy cda to Kubernetes
+
+type: application
+
+# This is the chart version. This version number should be incremented each time you make changes
+# to the chart and its templates, including the app version.
+# Versions are expected to follow Semantic Versioning (https://semver.org/)
+version: 0.1.7
+appVersion: 0.0.20.6-SNAPSHOT
+
+maintainers:
+- email: fkaufman@broadinstitute.org
+  name: fkaufman
+
+sources:
+- https://github.com/CancerDataAggregator/cda-helm/tree/master/charts
+
+home: https://CancerDataAggregator.github.io/cda-helm/
