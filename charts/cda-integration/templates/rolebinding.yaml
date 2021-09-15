@@ -10,7 +10,7 @@ subjects:
 - kind: ServiceAccount
   name: {{ include "cda-integration.serviceAccountName" . }}
 roleRef:
-  kind: Role
+  kind: ClusterRole
   name: "{{ include "cda-integration.fullname" . }}-use-pod-security-policy-role"
   apiGroup: rbac.authorization.k8s.io
 {{- end }}
