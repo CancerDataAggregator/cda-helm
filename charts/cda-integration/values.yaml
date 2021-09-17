@@ -8,19 +8,23 @@ global:
   applicationVersion: ""
 
 image:
-  repository: gcr.io/broad-cda-dev/cda-integration
-  pullPolicy: Always
+  repository: gcr.io/broad-cda-dev/cda
+  pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.0.20.6-SNAPSHOT
+  tag: 0.0.4-SNAPSHOT
 
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
 
 serviceAccount:
+  # Specifies whether a service account should be created
   create: true
-  annotations:
-    iam.gke.io/gcp-service-account: bq-cda-sa@broad-cda-dev.iam.gserviceaccount.com
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
 
 rbac:
   # Specifies whether rbac policies should be created
@@ -40,7 +44,7 @@ securityContext: {}
   # runAsUser: 1000
 
 service:
-  type: LoadBalancer
+  type: ClusterIP
   port: 8080
 
 ingress:

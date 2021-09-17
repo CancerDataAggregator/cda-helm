@@ -2,15 +2,15 @@
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: "{{ include "cda-integration.fullname" . }}-use-pod-security-policy"
+  name: "{{ include "cda.fullname" . }}-use-pod-security-policy"
   namespace: {{ .Release.Namespace }}
   labels:
-    {{- include "cda-integration.labels" . | nindent 4 }}
+    {{- include "cda.labels" . | nindent 4 }}
 subjects:
 - kind: ServiceAccount
-  name: {{ include "cda-integration.serviceAccountName" . }}
+  name: {{ include "cda.serviceAccountName" . }}
 roleRef:
-  kind: ClusterRole
-  name: "{{ include "cda-integration.fullname" . }}-use-pod-security-policy-role"
+  kind: Role
+  name: "{{ include "cda.fullname" . }}-use-pod-security-policy-role"
   apiGroup: rbac.authorization.k8s.io
 {{- end }}
