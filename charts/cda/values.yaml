@@ -11,7 +11,7 @@ image:
   repository: gcr.io/broad-cda-dev/cda
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
-  tag: 0.0.4-SNAPSHOT
+  tag: 2.0.0
 
 imagePullSecrets: []
 nameOverride: ""
