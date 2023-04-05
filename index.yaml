@@ -3,6 +3,28 @@ entries:
   cda:
   - apiVersion: v2
     appVersion: 0.0.4
+    created: "2023-04-05T17:43:03.885053541Z"
+    description: A Helm chart to deploy cda to Kubernetes
+    digest: 55863b2b1c7107d4a50b3b37da5642f0d9769c6946a13a45427bb24123e5bf8a
+    home: https://CancerDataAggregator.github.io/cda-helm/
+    keywords:
+    - google
+    - cloud
+    - cda
+    - broadinstitute
+    - CancerDataAggregator
+    maintainers:
+    - email: smark@broadinstitute.org
+      name: smark
+    name: cda
+    sources:
+    - https://github.com/CancerDataAggregator/cda-helm/tree/master/charts
+    type: application
+    urls:
+    - https://github.com/CancerDataAggregator/cda-helm/releases/download/cda-0.1.4/cda-0.1.4.tgz
+    version: 0.1.4
+  - apiVersion: v2
+    appVersion: 0.0.4
     created: "2020-12-18T20:12:15.537290134Z"
     description: A Helm chart to deploy cda to Kubernetes
     digest: d70b2524d561ac08d833b7f6c45779f6221fb82a123a3d963b7f09c6ee2b981b
