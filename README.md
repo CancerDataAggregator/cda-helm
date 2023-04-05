@@ -16,3 +16,12 @@ For more information on using Helm, refer to the [Helm documentation](https://gi
 
 ## Example
 ```helm upgrade cda cda-helm/cda --install --namespace dev --create-namespace```
+
+
+## **Note**
+
+To use GitHub Actions, you need to supply a valid GitHub token (Personal access token) in the `cr.yml` file.
+
+To obtain a token, go to your GitHub settings, then to developer settings, and find the "Personal access tokens (classic)" option. Generate a token and use it in the `cr.yml` file.
+
+Note that at some point in the future, "Personal access tokens (classic)" will be removed from GitHub. You will then need to use Fine-grained personal access tokens (currently in beta) as of 4/5/2023.
