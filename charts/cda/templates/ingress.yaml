@@ -32,11 +32,14 @@ spec:
     - host: {{ .host | quote }}
       http:
         paths:
-          {{- range .paths }}
-          - path: {{ . }}
+          {{- range $p := $paths }}
+          - path: {{ $p }}
+		  	pathType: "Prefix"
             backend:
-              serviceName: {{ $fullName }}
-              servicePort: {{ $svcPort }}
+              service:
+                name: {{ $fullName }}
+                port: 
+                  number: {{ $svcPort }}
           {{- end }}
     {{- end }}
   {{- end }}
